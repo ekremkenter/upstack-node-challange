@@ -10,6 +10,10 @@ app.use(bodyParser.json());
 
 const port = process.env.PORT || 3000;
 const {EMAIL_USER, EMAIL_PWD} = process.env;
+if(!EMAIL_USER || !EMAIL_PWD){
+    console.log('Initialize environment variables');
+    process.exit()
+}
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
     port: process.env.DB_PORT,
